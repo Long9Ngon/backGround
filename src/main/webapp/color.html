@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=di, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="full-height">
+        <h1>Background</h1>
+        <h1>Denerator</h1>
+        <div class="choose">
+            <input id="first-color" type="color">
+            <input id="second-color" type="color">
+            <button id="random">Random</button>
+        </div>
+        <h3>This is the background</h3>
+        <h4 id="notice"></h4>
+    </div>
+    
+</body>
+
+<style>
+    *{
+        margin: 0;
+    }
+    
+    html, body{
+        height: 100%;
+    }
+    
+    .full-height{
+        height: 100%;
+        margin-top: 40px;
+    }
+
+    h1, h3 , h4{
+        text-align: center;
+        color: #632727;
+    }
+
+    h1, h3{
+        text-transform: uppercase;
+    }
+
+    h1{
+        letter-spacing: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 3.2rem;
+        margin-top: 10px;
+    }
+
+    h3{
+        letter-spacing: 10px;
+    }
+    
+    .choose{
+        margin: 40px 0 25px 0;
+        text-align: center;
+    }
+    </style>
+
+    <script>
+        var first_color = document.getElementById('first-color')
+        var second_color = document.getElementById('second-color')
+        var notice = document.getElementById('notice')
+        document.body.style.backgroundImage = `linear-gradient(to right, ${first_color.value}, ${second_color.value})`
+        notice.innerHTML = `${document.body.style.backgroundImage}`
+
+        function inputChange(){
+            document.body.style.backgroundImage = `linear-gradient(to right, ${first_color.value}, ${second_color.value})`
+            notice.innerHTML = `${document.body.style.backgroundImage}`
+        }
+
+
+        first_color.addEventListener('change', inputChange)
+        second_color.addEventListener('change', inputChange)
+
+        var ran = document.getElementById('random') 
+        ran.onclick = function() {
+            var f1 = Math.floor(Math.random() * 256)
+            var f2 = Math.floor(Math.random() * 256)
+            var f3 = Math.floor(Math.random() * 256)
+            var s1 = Math.floor(Math.random() * 256)
+            var s2 = Math.floor(Math.random() * 256)
+            var s3 = Math.floor(Math.random() * 256)
+            document.body.style.backgroundImage = `linear-gradient(to right, rgb(${f1}, ${f2}, ${f3}), rgb(${s1}, ${s2}, ${s3})`
+            notice.innerHTML = `${document.body.style.backgroundImage}`
+        }
+    
+    </script>
+
+</html>
